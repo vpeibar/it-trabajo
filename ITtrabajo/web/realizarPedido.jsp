@@ -4,14 +4,18 @@
     Author     : maria
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
+    <head><title>Realizar Pedido</title></head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
+        <h2>Realizar Pedido</h2>
+
+    <s:form action="crearPedido">
+        <s:textfield name="pedido.clienteId" label="ID Cliente"/>
+        <s:textfield name="pedido.platoId" label="ID Plato"/>
+        <s:submit value="Confirmar Pedido"/>
+    </s:form>
+
+</body>
 </html>
+

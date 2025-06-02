@@ -4,14 +4,19 @@
     Author     : maria
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
+    <head><title>Valorar Pedido</title></head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
+        <h2>Valorar Pedido</h2>
+
+    <s:form action="registrarValoracion">
+        <s:textfield name="valoracion.pedidoId" label="ID Pedido"/>
+        <s:textfield name="valoracion.puntuacion" label="Puntuación (1 a 5)"/>
+        <s:textarea name="valoracion.comentario" label="Comentario"/>
+        <s:submit value="Enviar Valoración"/>
+    </s:form>
+
+</body>
 </html>
+

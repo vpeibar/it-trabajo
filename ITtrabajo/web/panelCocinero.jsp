@@ -4,14 +4,17 @@
     Author     : maria
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
+    <head><title>Panel Cocinero</title></head>
     <body>
-        <h1>Hello World!</h1>
+        <h2>Bienvenido, Cocinero</h2>
+
+        <ul>
+            <li><a href="crearPlato.jsp">Crear Plato</a></li>
+            <li><a href="listarPlatos.jsp">Ver Mis Platos</a></li>
+            <li><a href="verValoraciones.jsp">Ver Valoraciones</a></li>
+        </ul>
     </body>
 </html>
+

@@ -4,14 +4,21 @@
     Author     : maria
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
+    <head><title>Crear Plato</title></head>
     <body>
-        <h1>Hello World!</h1>
+        <h2>Crear Nuevo Plato</h2>
+
+        <s:form action="crearPlato">
+            <s:textfield name="plato.nombre" label="Nombre"/>
+            <s:textarea name="plato.descripcion" label="Descripción"/>
+            <s:textfield name="plato.precio" label="Precio"/>
+            <s:textfield name="plato.porciones" label="Porciones"/>
+            <s:select name="plato.categoriaId" list="categorias" listKey="id" listValue="nombre" label="Categoría"/>
+            <s:submit value="Crear"/>
+        </s:form>
+
     </body>
 </html>
+

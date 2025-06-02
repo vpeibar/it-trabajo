@@ -4,14 +4,17 @@
     Author     : maria
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
+    <head><title>Panel Cliente</title></head>
     <body>
-        <h1>Hello World!</h1>
+        <h2>Bienvenido, Cliente</h2>
+
+        <ul>
+            <li><a href="listarPlatos.jsp">Ver Platos</a></li>
+            <li><a href="realizarPedido.jsp">Hacer Pedido</a></li>
+            <li><a href="valorarPedido.jsp">Valorar Pedido</a></li>
+        </ul>
     </body>
 </html>
+

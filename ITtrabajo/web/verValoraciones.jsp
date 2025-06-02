@@ -4,14 +4,20 @@
     Author     : maria
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
+    <head><title>Valoraciones Recibidas</title></head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
+        <h2>Valoraciones Recibidas</h2>
+
+    <s:iterator value="valoraciones">
+        <div style="border:1px solid #ccc; margin:10px; padding:10px;">
+            <p><strong>Puntuación:</strong> <s:property value="puntuacion"/></p>
+            <p><strong>Comentario:</strong> <s:property value="comentario"/></p>
+            <p><strong>Fecha:</strong> <s:property value="fecha"/></p>
+        </div>
+    </s:iterator>
+
+</body>
 </html>
+

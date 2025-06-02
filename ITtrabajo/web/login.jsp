@@ -4,14 +4,19 @@
     Author     : maria
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
+    <head><title>Login</title></head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
+        <h2>Iniciar sesión</h2>
+
+    <s:form action="login">
+        <s:textfield name="usuario.nombreUsuario" label="Usuario"/>
+        <s:password name="usuario.contrasena" label="Contraseña"/>
+        <s:submit value="Entrar"/>
+    </s:form>
+
+    <s:property value="mensaje"/>
+</body>
 </html>
+
