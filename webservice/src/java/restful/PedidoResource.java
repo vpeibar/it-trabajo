@@ -1,53 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package restful;
 
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Produces;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
-import javax.ws.rs.core.MediaType;
+import dao.PedidoDAO;
+import model.Pedido;
 
-/**
- * REST Web Service
- *
- * @author vicky
- */
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
+import java.util.List;
+
 @Path("/pedido")
 public class PedidoResource {
 
     @Context
     private UriInfo context;
 
-    /**
-     * Creates a new instance of PedidoResource
-     */
-    public PedidoResource() {
-    }
+    PedidoDAO dao = new PedidoDAO();
 
-    /**
-     * Retrieves representation of an instance of restful.PedidoResource
-     * @return an instance of java.lang.String
-     */
     @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public String getXml() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    @Path("/cliente/{idCliente}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Pedido> getPedidosPorCliente(@PathParam("idCliente") int idCliente) {
+        return dao.obtenerPorCliente(idCliente);
     }
 
-    /**
-     * PUT method for updating or creating an instance of PedidoResource
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public void putXml(String content) {
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Pedido getPedido(@PathParam("id") int id) {
+        return dao.obtenerPorId(id);
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response crearPedido(Pedido pedido) {
+        boolean exito = dao.crear(pedido);
+        return exito ? Response.status(Response.Status.CREATED).entity(pedido).build()
+                     : Response.status(Response.Status.BAD_REQUEST).build();
     }
 }
