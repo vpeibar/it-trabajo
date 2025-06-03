@@ -6,14 +6,19 @@
 package restful;
 
 import dao.CategoriaDAO;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
+import java.sql.SQLException;
+import java.util.List;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import model.Categoria;
 
 /**
  * REST Web Service
@@ -28,19 +33,42 @@ public class CategoriaResource {
     private CategoriaDAO dao = new CategoriaDAO();
 
     @GET
-    @Path("/{nombre}")
-    @Produces(MediaType.APPLICATION_XML)
-    public String getXml() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    public List<Categoria> listarCategorias() throws SQLException {
+        return dao.listar();
+    }
+    
+    @GET
+    @Path("/{id}")
+    public Categoria obtenerCategoria(@PathParam("id") int id) throws SQLException {
+        Categoria c = dao.buscarPorId(id);
+        if (c == null) {
+            throw new NotFoundException("Categoria no encontrada");
+        }
+        return c;
+    }
+    
+    @POST
+    public Categoria crearCategoria(Categoria categoria) throws SQLException {
+        return dao.crear(categoria);
     }
 
-    /**
-     * PUT method for updating or creating an instance of CategoriaResource
-     * @param content representation for the resource
-     */
     @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public void putXml(String content) {
+    @Path("/{id}")
+    public Categoria actualizarCategoria(@PathParam("id") int id, Categoria categoria) throws SQLException {
+        categoria.setId(id);
+        boolean exito = dao.actualizar(categoria);
+        if (!exito) {
+            throw new NotFoundException("Categoria no encontrada para actualizar");
+        }
+        return categoria;
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public void eliminarCategoria(@PathParam("id") int id) throws SQLException {
+        boolean exito = dao.eliminar(id);
+        if (!exito) {
+            throw new NotFoundException("Categoria no encontrada para eliminar");
+        }
     }
 }

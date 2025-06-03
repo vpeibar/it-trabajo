@@ -22,7 +22,7 @@ import model.Usuario;
 public class UsuarioDAO {
     
     private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost:3307/directoalplato", "root", "");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3307/directoalplato", "", "");
     }
 
     public List<Usuario> listar() throws SQLException {
@@ -73,7 +73,7 @@ public class UsuarioDAO {
     }
 
     public boolean actualizar(Usuario usuario) throws SQLException {
-        String sql = "UPDATE usuarios SET nombre=?, apellidos=?, telefono=?, dni=?, nombreUsuario=?, contrasena=?, tipo=?, direccion=? WHERE id=?";
+        String sql = "UPDATE usuario SET nombre=?, apellidos=?, telefono=?, dni=?, nombreUsuario=?, contrasena=?, tipo=?, direccion=? WHERE id=?";
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -85,7 +85,7 @@ public class UsuarioDAO {
             ps.setString(6, usuario.getContrasena());
             ps.setString(7, usuario.getTipo());
             ps.setString(8, usuario.getDireccion());
-            ps.setLong(9, usuario.getId());
+            ps.setInt(9, usuario.getId());
 
             return ps.executeUpdate() > 0;
         }
@@ -93,11 +93,11 @@ public class UsuarioDAO {
     }
 
     public boolean eliminar(int id) throws SQLException {
-        String sql = "DELETE FROM usuarios WHERE id = ?";
+        String sql = "DELETE FROM usuario WHERE id = ?";
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setLong(1, id);
+            ps.setInt(1, id);
             return ps.executeUpdate() > 0;
         }
     }
