@@ -19,20 +19,20 @@ import javax.ws.rs.core.MediaType;
  *
  * @author vicky
  */
-@Path("generic")
-public class GenericResource {
+@Path("/plato")
+public class PlatoResource {
 
     @Context
     private UriInfo context;
 
     /**
-     * Creates a new instance of GenericResource
+     * Creates a new instance of PlatoResource
      */
-    public GenericResource() {
+    public PlatoResource() {
     }
 
     /**
-     * Retrieves representation of an instance of restful.GenericResource
+     * Retrieves representation of an instance of restful.PlatoResource
      * @return an instance of java.lang.String
      */
     @GET
@@ -43,7 +43,7 @@ public class GenericResource {
     }
 
     /**
-     * PUT method for updating or creating an instance of GenericResource
+     * PUT method for updating or creating an instance of PlatoResource
      * @param content representation for the resource
      */
     @PUT
