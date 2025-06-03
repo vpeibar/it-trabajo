@@ -29,6 +29,11 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(restful.CategoriaResource.class);
+        resources.add(restful.PedidoResource.class);
+        resources.add(restful.PlatoResource.class);
+        resources.add(restful.UsuarioResource.class);
+        resources.add(restful.ValoracionResource.class);
     }
     
 }

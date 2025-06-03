@@ -5,51 +5,72 @@
  */
 package restful;
 
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
+import dao.UsuarioDAO;
+import java.sql.SQLException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
  *
- * @author vicky
+ * @author maria
  */
-@Path("/usuario")
+import model.Usuario;
+
+import java.util.*;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.POST;
+import javax.ws.rs.PathParam;
+
+@Path("/usuarios")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class UsuarioResource {
 
-    @Context
-    private UriInfo context;
-
-    /**
-     * Creates a new instance of UsuarioResource
-     */
-    public UsuarioResource() {
-    }
-
-    /**
-     * Retrieves representation of an instance of restful.UsuarioResource
-     * @return an instance of java.lang.String
-     */
+    private UsuarioDAO dao = new UsuarioDAO();
+    
     @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public Response obtener(@PathParam("id") int id) {
-        Usuario u = DAOUsuario.obtenerPorId(id);
-        return u != null ? Response.ok(u).build() : Response.status(Response.Status.NOT_FOUND).build();
+    public List<Usuario> listarUsuarios() throws SQLException {
+        return dao.listar();
     }
 
-    /**
-     * PUT method for updating or creating an instance of UsuarioResource
-     * @param content representation for the resource
-     */
+    @GET
+    @Path("/{id}")
+    public Usuario obtenerUsuario(@PathParam("id") int id) throws SQLException {
+        Usuario u = dao.buscarPorId(id);
+        if (u == null) {
+            throw new NotFoundException("Usuario no encontrado");
+        }
+        return u;
+    }
+
+    @POST
+    public Usuario crearUsuario(Usuario usuario) throws SQLException {
+        return dao.crear(usuario);
+    }
+
     @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public void putXml(String content) {
+    @Path("/{id}")
+    public Usuario actualizarUsuario(@PathParam("id") int id, Usuario usuario) throws SQLException {
+        usuario.setId(id);
+        boolean exito = dao.actualizar(usuario);
+        if (!exito) {
+            throw new NotFoundException("Usuario no encontrado para actualizar");
+        }
+        return usuario;
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public void eliminarUsuario(@PathParam("id") int id) throws SQLException {
+        boolean exito = dao.eliminar(id);
+        if (!exito) {
+            throw new NotFoundException("Usuario no encontrado para eliminar");
+        }
     }
 }

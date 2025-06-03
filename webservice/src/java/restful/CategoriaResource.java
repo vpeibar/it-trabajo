@@ -5,6 +5,7 @@
  */
 package restful;
 
+import dao.CategoriaDAO;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -19,23 +20,15 @@ import javax.ws.rs.core.MediaType;
  *
  * @author vicky
  */
-@Path("/categoria")
+@Path("/categorias")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class CategoriaResource {
 
-    @Context
-    private UriInfo context;
+    private CategoriaDAO dao = new CategoriaDAO();
 
-    /**
-     * Creates a new instance of CategoriaResource
-     */
-    public CategoriaResource() {
-    }
-
-    /**
-     * Retrieves representation of an instance of restful.CategoriaResource
-     * @return an instance of java.lang.String
-     */
     @GET
+    @Path("/{nombre}")
     @Produces(MediaType.APPLICATION_XML)
     public String getXml() {
         //TODO return proper representation object
