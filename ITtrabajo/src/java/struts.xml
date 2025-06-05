@@ -18,9 +18,12 @@
         <action name="listarUsuarios" class="controller.UsuariosAction" method="listar">
             <result name="success">/listarUsuarios.jsp</result>
         </action>
-        <action name="registrar" class="controller.UsuariosAction" method="registrar">
+        <action name="registrarUsuario" class="controller.UsuariosAction" method="registrar">
             <result name="success" type="redirectAction">listarUsuarios</result>
             <result name="error">/registrarUsuario.jsp</result>
+        </action>
+        <action name="listarCategorias" class="controller.CategoriasAction" method="listar">
+            <result name="success">/listarCategorias.jsp</result>
         </action>
     </package>
 </struts>

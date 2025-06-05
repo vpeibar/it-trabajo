@@ -15,7 +15,7 @@
     <body>
         <h1>Registrar usuario</h1>
 
-        <s:form action="registrar" method="post">
+        <s:form action="registrarUsuario" method="post">
             <s:textfield name="usuario.nombreUsuario" label="Nombre de usuario" />
             <s:password name="usuario.contrasena" label="Contraseña"/>
             <s:textfield name="usuario.nombre" label="Nombre" />
