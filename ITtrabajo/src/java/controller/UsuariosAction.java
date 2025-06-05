@@ -9,6 +9,7 @@ import clientes.UsuarioJerseyClient;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Arrays;
 import java.util.List;
 import javax.ws.rs.core.GenericType;
 import rest.Usuario;
@@ -19,6 +20,8 @@ import rest.Usuario;
  */
 public class UsuariosAction extends ActionSupport {
     private List<Usuario> usuarios;
+    private Usuario usuario;
+    private List<String> tipos = Arrays.asList("Cliente", "Cocinero");
     
     public UsuariosAction() {
     }
@@ -36,8 +39,32 @@ public class UsuariosAction extends ActionSupport {
         }
         return SUCCESS;
     }
+    
+    public String registrar() {
+        try {
+            UsuarioJerseyClient client = new UsuarioJerseyClient();
+            client.create_XML(usuario); 
+            client.close();
+            return SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ERROR;
+        }
+    }
 
     public List<Usuario> getUsuarios() {
         return usuarios;
+    }
+    
+    public List<String> getTipos() {
+        return tipos;
+    }
+    
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

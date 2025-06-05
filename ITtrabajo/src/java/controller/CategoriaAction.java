@@ -1,4 +1,4 @@
-package controller;
+/*package controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.google.gson.Gson;
@@ -60,3 +60,4 @@ public class CategoriaAction extends ActionSupport {
         this.mensaje = mensaje;
     }
 }
+*/

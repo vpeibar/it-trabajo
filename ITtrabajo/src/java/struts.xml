@@ -6,11 +6,21 @@
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         <action name="" class="controller.UsuariosAction" method="listar">
-            <result name="success">/listarUsuarios.jsp</result>
+            <result name="success">/login.jsp</result>
         </action>
         <action name="pedido-crear" class="controller.PedidoAction" method="crear">
             <result name="success">/realizarPedido.jsp</result>
             <result name="error">/realizarPedido.jsp</result>
+        </action>
+        <action name="registrarUsuario" class="controller.UsuariosAction" method="registrar">
+            <result name="success">/registrarUsuario.jsp</result>
+        </action>
+        <action name="listarUsuarios" class="controller.UsuariosAction" method="listar">
+            <result name="success">/listarUsuarios.jsp</result>
+        </action>
+        <action name="registrar" class="controller.UsuariosAction" method="registrar">
+            <result name="success" type="redirectAction">listarUsuarios</result>
+            <result name="error">/registrarUsuario.jsp</result>
         </action>
     </package>
 </struts>
