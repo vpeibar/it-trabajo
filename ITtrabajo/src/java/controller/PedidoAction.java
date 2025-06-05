@@ -1,42 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/*package controller;
+package controller;
 
+import clientes.PedidoJerseyClient;
 import com.opensymphony.xwork2.ActionSupport;
-import model.Pedido;
-import com.google.gson.Gson;
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import rest.Pedido;
 
+import static com.opensymphony.xwork2.Action.SUCCESS;
+import static com.opensymphony.xwork2.Action.ERROR;
+
+/**
+ * Action para crear un nuevo pedido usando el cliente REST.
+ */
 public class PedidoAction extends ActionSupport {
-
+    
     private Pedido pedido;
+    private String mensaje;
+
+    public PedidoAction() {
+    }
 
     public String crear() {
+        PedidoJerseyClient client = new PedidoJerseyClient();
         try {
-            URL url = new URL("http://localhost:8080/DirectoAlPlatoREST/webresources/pedidos");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setDoOutput(true);
-
-            Gson gson = new Gson();
-            String json = gson.toJson(pedido);
-
-            try (OutputStream os = conn.getOutputStream()) {
-                os.write(json.getBytes());
-            }
-
-            return conn.getResponseCode() == 201 ? SUCCESS : ERROR;
+            client.create_JSON(pedido);
+            mensaje = "Pedido creado correctamente.";
+            return SUCCESS;
         } catch (Exception e) {
+            e.printStackTrace();
+            mensaje = "Error al crear el pedido.";
             return ERROR;
+        } finally {
+            client.close();
         }
     }
 
+    // Getters y setters
     public Pedido getPedido() {
         return pedido;
     }
@@ -44,5 +41,12 @@ public class PedidoAction extends ActionSupport {
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
 }
-*/
