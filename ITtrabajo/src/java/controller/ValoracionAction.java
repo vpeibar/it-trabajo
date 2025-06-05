@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+/*package controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import model.Valoracion;
@@ -46,3 +46,4 @@ public class ValoracionAction extends ActionSupport {
         this.valoracion = valoracion;
     }
 }
+*/

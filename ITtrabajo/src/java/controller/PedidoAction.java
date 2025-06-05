@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+/*package controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import model.Pedido;
@@ -45,3 +45,4 @@ public class PedidoAction extends ActionSupport {
         this.pedido = pedido;
     }
 }
+*/
