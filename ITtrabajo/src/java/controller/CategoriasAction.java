@@ -20,6 +20,7 @@ import rest.Categoria;
 public class CategoriasAction extends ActionSupport {
     
     private List<Categoria> categorias;
+    private Categoria categoria;
     
     public CategoriasAction() {
     }
@@ -38,9 +39,28 @@ public class CategoriasAction extends ActionSupport {
         }
         return SUCCESS;
     }
+    
+    public String registrar() {
+        try {
+            CategoriaJerseyClient client = new CategoriaJerseyClient();
+            client.create_XML(categoria);
+            client.close();
+            return SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ERROR;
+        }
+    }
 
     public List<Categoria> getCategorias() {
         return categorias;
     }
     
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 }

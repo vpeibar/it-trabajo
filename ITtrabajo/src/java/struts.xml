@@ -25,5 +25,11 @@
         <action name="listarCategorias" class="controller.CategoriasAction" method="listar">
             <result name="success">/listarCategorias.jsp</result>
         </action>
+        <action name="registrarCategoria" class="controller.CategoriasAction" method="registrar">
+            <result name="success">/registrarCategoria.jsp</result>
+        </action>
+        <action name="registrarCategoria" class="controller.CategoriasAction" method="registrar">
+            <result name="success" type="redirectAction">listarCategorias</result>
+        </action>
     </package>
 </struts>
