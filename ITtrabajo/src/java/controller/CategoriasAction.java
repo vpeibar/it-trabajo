@@ -51,7 +51,19 @@ public class CategoriasAction extends ActionSupport {
             return ERROR;
         }
     }
-
+    
+    public String eliminar() {
+        CategoriaJerseyClient client = new CategoriaJerseyClient();
+        try {
+            client.remove(String.valueOf(categoria.getId()));
+            client.close();
+            return SUCCESS;
+        } catch (Exception e) {
+            addActionError("Error al eliminar categoria: " + e.getMessage());
+            return ERROR;
+        }
+    }
+    
     public List<Categoria> getCategorias() {
         return categorias;
     }

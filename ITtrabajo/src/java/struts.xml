@@ -31,5 +31,11 @@
         <action name="registrarCategoria" class="controller.CategoriasAction" method="registrar">
             <result name="success" type="redirectAction">listarCategorias</result>
         </action>
+        <action name="eliminarCategoria" class="controller.CategoriasAction" method="eliminar">
+            <result name="success" type="redirectAction">listarCategorias</result>
+        </action>
+        <action name="eliminarUsuario" class="controller.UsuariosAction" method="eliminar">
+            <result name="success" type="redirectAction">listarUsuarios</result>
+        </action>
     </package>
 </struts>

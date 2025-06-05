@@ -51,6 +51,18 @@ public class UsuariosAction extends ActionSupport {
             return ERROR;
         }
     }
+    
+    public String eliminar() {
+        UsuarioJerseyClient client = new UsuarioJerseyClient();
+        try {
+            client.remove(String.valueOf(usuario.getId()));
+            client.close();
+            return SUCCESS;
+        } catch (Exception e) {
+            addActionError("Error al eliminar usuario: " + e.getMessage());
+            return ERROR;
+        }
+    }
 
     public List<Usuario> getUsuarios() {
         return usuarios;
