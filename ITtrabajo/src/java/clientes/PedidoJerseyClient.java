@@ -92,6 +92,16 @@ public class PedidoJerseyClient {
     public void remove(String id) throws ClientErrorException {
         webTarget.path(java.text.MessageFormat.format("{0}", new Object[]{id})).request().delete();
     }
+    public <T> T findByCliente_JSON(Class<T> responseType, String clienteId) throws ClientErrorException {
+    WebTarget resource = webTarget.path("cliente").path(clienteId);
+    return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
+}
+    public <T> T findPendientes_JSON(Class<T> responseType) throws ClientErrorException {
+    WebTarget resource = webTarget.path("pendientes");
+    return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
+}
+
+
 
     public void close() {
         client.close();

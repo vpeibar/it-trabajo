@@ -14,6 +14,7 @@
             <li><a href="crearPlato.jsp">Crear Plato</a></li>
             <li><a href="listarPlatos.jsp">Ver Mis Platos</a></li>
             <li><a href="verValoraciones.jsp">Ver Valoraciones</a></li>
+            <li><a href="listarPedidos.jsp">Ver los pedidos pendientes</a></li>
         </ul>
     </body>
 </html>

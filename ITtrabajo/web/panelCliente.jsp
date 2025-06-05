@@ -14,6 +14,7 @@
             <li><a href="listarPlatos.jsp">Ver Platos</a></li>
             <li><a href="realizarPedido.jsp">Hacer Pedido</a></li>
             <li><a href="valorarPedido.jsp">Valorar Pedido</a></li>
+            <li><a href="listarPedido.jsp">Ver mis pedidos</a></li>
         </ul>
     </body>
 </html>

@@ -62,6 +62,8 @@ public class Pedido implements Serializable {
     @ManyToOne(optional = false)
     private Usuario clienteId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoId")
+    private Collection<LineaPedido> lineaPedidoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoId")
     private Collection<Valoracion> valoracionCollection;
 
     public Pedido() {
@@ -112,6 +114,14 @@ public class Pedido implements Serializable {
     @XmlTransient
     public Collection<Valoracion> getValoracionCollection() {
         return valoracionCollection;
+    }
+
+    public Collection<LineaPedido> getLineaPedidoCollection() {
+        return lineaPedidoCollection;
+    }
+
+    public void setLineaPedidoCollection(Collection<LineaPedido> lineaPedidoCollection) {
+        this.lineaPedidoCollection = lineaPedidoCollection;
     }
 
     public void setValoracionCollection(Collection<Valoracion> valoracionCollection) {
