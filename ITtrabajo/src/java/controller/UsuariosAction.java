@@ -21,7 +21,7 @@ import rest.Usuario;
 public class UsuariosAction extends ActionSupport {
     private List<Usuario> usuarios;
     private Usuario usuario;
-    private List<String> tipos = Arrays.asList("Cliente", "Cocinero");
+    private List<String> tipos = Arrays.asList("cliente", "cocinero");
     
     public UsuariosAction() {
     }
