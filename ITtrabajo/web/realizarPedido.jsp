@@ -10,8 +10,8 @@
             <table border="1">
                 <tr>
                     <th>Id</th>
-                    <th>Id del usuario</th>
-                    <th>Id de la categoria</th>
+                    <th>Cocinero</th>
+                    <th>Categoria</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
                     <th>Precio</th>
@@ -20,8 +20,8 @@
                 <s:iterator value="platos" var="plato">
                     <tr>
                         <td><s:property value="#plato.id"/></td>
-                        <td><s:property value="#plato.usuarioId"/></td>
-                        <td><s:property value="#plato.categoriaId"/></td>
+                        <td><s:property value="#plato.usuarioId.nombreUsuario"/></td>
+                        <td><s:property value="#plato.categoriaId.nombre"/></td>
                         <td><s:property value="#plato.nombre"/></td>
                         <td><s:property value="#plato.descripcion"/></td>
                         <td><s:property value="#plato.precio"/></td>

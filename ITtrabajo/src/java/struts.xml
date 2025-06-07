@@ -22,10 +22,10 @@
         <action name="menuCliente">
             <result name="success">/panelCliente.jsp</result>
         </action>
-        <action name="listarPlatos" class="actions.PlatosAction" method="listar">
+        <action name="listarPlatos" class="controller.PlatosAction" method="listar">
             <result name="success">/listarPlatos.jsp</result>
         </action>
-        <action name="realizarPedido" class="actions.PlatosAction" method="listar">
+        <action name="realizarPedido" class="controller.PlatosAction" method="listar">
             <result name="success">/realizarPedido.jsp</result>
         </action>
         <action name="pedido-crear" class="controller.PedidoAction" method="crear">
