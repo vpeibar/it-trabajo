@@ -10,6 +10,7 @@
         </action>
         <action name="formRegistro" class="controller.UsuariosAction" method="registrar">
             <result name="success">/registrarUsuario.jsp</result>
+            <result name="error">/registrarUsuario.jsp</result>
         </action>
         <action name="registrarUsuario" class="controller.UsuariosAction" method="registrar">
             <result name="success" type="redirectAction">listarUsuarios</result>
@@ -17,6 +18,7 @@
         </action>
         <action name="listarUsuarios" class="controller.UsuariosAction" method="listar">
             <result name="success">/listarUsuarios.jsp</result>
+            <result name="error">/registrarUsuario.jsp</result>
         </action>
 
         <action name="menuCliente">
@@ -50,5 +52,16 @@
         <action name="eliminarUsuario" class="controller.UsuariosAction" method="eliminar">
             <result name="success" type="redirectAction">listarUsuarios</result>
         </action>
+        
+        <action name="registrarIngrediente" class="controller.IngredienteAction" method="registrar">
+            <result name="success">/registrarIngrediente.jsp</result>
+            <result name="error">/formulario.jsp</result>
+        </action>
+
+        <action name="eliminarIngrediente" class="controller.IngredienteAction" method="eliminar">
+            <result name="success">/eliminarIngrediente.jsp</result>
+            <result name="error">/formulario.jsp</result>
+        </action>
+
     </package>
 </struts>
