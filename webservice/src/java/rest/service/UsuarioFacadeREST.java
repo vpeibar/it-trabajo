@@ -18,6 +18,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import rest.Usuario;
 
 /**
@@ -86,6 +87,23 @@ public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+    @POST
+    @Path("login")
+    @Consumes({MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_XML})
+    public Response login(Usuario usuario) {
+        Usuario encontrado = em.createQuery("SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario AND u.contrasena = :contrasena", Usuario.class)
+                .setParameter("nombreUsuario", usuario.getNombreUsuario())
+                .setParameter("contrasena", usuario.getContrasena())
+                .getSingleResult();
+
+        if (encontrado != null) {
+            return Response.ok(encontrado).build();
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED).entity("Credenciales incorrectas").build();
+        }
     }
     
 }
