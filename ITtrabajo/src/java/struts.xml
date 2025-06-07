@@ -8,6 +8,11 @@
         <action name="" class="controller.UsuariosAction" method="listar">
             <result name="success">/login.jsp</result>
         </action>
+        <action name="login" class="controller.UsuariosAction" method="login">
+            <result name="cliente">/panelCliente.jsp</result>
+            <result name="cocinero">/panelCocinero.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
         <action name="formRegistro" class="controller.UsuariosAction" method="registrar">
             <result name="success">/registrarUsuario.jsp</result>
             <result name="error">/registrarUsuario.jsp</result>
@@ -26,6 +31,10 @@
         </action>
         <action name="listarPlatos" class="controller.PlatosAction" method="listar">
             <result name="success">/listarPlatos.jsp</result>
+        </action>
+        
+        <action name="eliminarUsuario" class="controller.UsuariosAction" method="eliminar">
+            <result name="success">login.jsp</result>
         </action>
         <action name="realizarPedido" class="controller.PlatosAction" method="listar">
             <result name="success">/realizarPedido.jsp</result>
@@ -49,9 +58,7 @@
         <action name="eliminarCategoria" class="controller.CategoriasAction" method="eliminar">
             <result name="success" type="redirectAction">listarCategorias</result>
         </action>
-        <action name="eliminarUsuario" class="controller.UsuariosAction" method="eliminar">
-            <result name="success" type="redirectAction">listarUsuarios</result>
-        </action>
+        
         
         <action name="registrarIngrediente" class="controller.IngredienteAction" method="registrar">
             <result name="success">/registrarIngrediente.jsp</result>

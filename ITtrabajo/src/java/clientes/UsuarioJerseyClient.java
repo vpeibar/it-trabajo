@@ -7,8 +7,12 @@ package clientes;
 
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import rest.Usuario;
 
 /**
  * Jersey REST client generated for REST resource:UsuarioFacadeREST
@@ -97,5 +101,21 @@ public class UsuarioJerseyClient {
     public void close() {
         client.close();
     }
-    
+
+    public Usuario login(String nombreUsuario, String contrasena) {
+        Usuario user = new Usuario();
+        user.setNombreUsuario(nombreUsuario);
+        user.setContrasena(contrasena);
+
+        WebTarget resource = webTarget.path("login");
+        Response response = resource.request(MediaType.APPLICATION_XML)
+                .post(Entity.entity(user, MediaType.APPLICATION_XML));
+
+        if (response.getStatus() == 200) {
+            return response.readEntity(Usuario.class);
+        } else {
+            return null;
+        }
+    }
+
 }

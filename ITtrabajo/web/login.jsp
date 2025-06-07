@@ -10,7 +10,7 @@
     <body>
         <h1>Iniciar Sesión</h1>
 
-        <s:form action="login" method="post">
+        <s:form action="login">
             <s:textfield name="nombreUsuario" label="Nombre de usuario"/>
             <s:password name="contrasena" label="Contraseña"/>
             <s:submit value="Iniciar sesión"/>

@@ -10,7 +10,7 @@
 <html>
     <head><title>Panel Cliente</title></head>
     <body>
-        <h1>Bienvenido, <s:property value="#session.usuario.nombre" />!</h1>
+        <h1>Bienvenido, <s:property value="#session.usuario.nombreUsuario" />!</h1>
         <h2>Menú de Cliente</h2>
         <s:form action="listarPlatos">
             <s:submit value="Ver Platos"/>
@@ -26,6 +26,10 @@
 
         <s:form action="listarPedidos">
             <s:submit value="Ver Mis Pedidos"/>
+        </s:form>
+        
+        <s:form action="eliminarUsuario">
+            <s:submit value="Darse de baja"/>
         </s:form>
     </body>
 </html>
