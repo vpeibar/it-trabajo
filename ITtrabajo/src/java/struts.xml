@@ -19,6 +19,15 @@
             <result name="success">/listarUsuarios.jsp</result>
         </action>
 
+        <action name="menuCliente">
+            <result name="success">/panelCliente.jsp</result>
+        </action>
+        <action name="listarPlatos" class="actions.PlatosAction" method="listar">
+            <result name="success">/listarPlatos.jsp</result>
+        </action>
+        <action name="realizarPedido" class="actions.PlatosAction" method="listar">
+            <result name="success">/realizarPedido.jsp</result>
+        </action>
         <action name="pedido-crear" class="controller.PedidoAction" method="crear">
             <result name="success">/realizarPedido.jsp</result>
             <result name="error">/realizarPedido.jsp</result>
