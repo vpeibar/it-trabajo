@@ -5,13 +5,10 @@
  */
 package clientes;
 
-import java.util.List;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import rest.Plato;
 
 /**
  * Jersey REST client generated for REST resource:PlatoFacadeREST
@@ -99,12 +96,6 @@ public class PlatoJerseyClient {
 
     public void close() {
         client.close();
-    }
-
-    public List<Plato> getPlatosPorUsuario(int usuarioId) {
-        WebTarget resource = webTarget.path("usuario").path(String.valueOf(usuarioId));
-        return resource.request(MediaType.APPLICATION_XML).get(new GenericType<List<Plato>>() {
-        });
     }
 
 }

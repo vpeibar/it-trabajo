@@ -5,7 +5,8 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        <action name="" class="controller.UsuariosAction" method="listar">
+        <!--no definitivo name=""-->
+        <action name="login" class="controller.UsuariosAction" method="listar">
             <result name="success">/login.jsp</result>
         </action>
         <action name="login" class="controller.UsuariosAction" method="login">
@@ -21,10 +22,6 @@
             <result name="success" type="redirectAction">listarUsuarios</result>
             <result name="error">/registrarUsuario.jsp</result>
         </action>
-        <action name="listarUsuarios" class="controller.UsuariosAction" method="listar">
-            <result name="success">/listarUsuarios.jsp</result>
-            <result name="error">/registrarUsuario.jsp</result>
-        </action>
 
         <action name="menuCliente">
             <result name="success">/panelCliente.jsp</result>
@@ -32,33 +29,32 @@
         <action name="listarPlatos" class="controller.PlatosAction" method="listar">
             <result name="success">/listarPlatos.jsp</result>
         </action>
-        
         <action name="eliminarUsuario" class="controller.UsuariosAction" method="eliminar">
             <result name="success">/login.jsp</result>
             <result name="error" type="redirectAction">menuCliente</result>
         </action>
-      <!--  <action name="realizarPedido" class="controller.PlatosAction" method="listar">
-            <result name="success">/realizarPedido.jsp</result>
-        </action>
-        <action name="pedido-crear" class="controller.PedidoAction" method="crear">
-            <result name="success">/realizarPedido.jsp</result>
-            <result name="error">/realizarPedido.jsp</result>
-        </action>-->
-        
+     
         <action name="menuCocinero">
             <result name="success">/panelCocinero.jsp</result>
         </action>
-        <action name="listarPorCliente" class="controller.PlatosAction" method="listarPorCliente">
-            <result name="success">/listarPlatosCocinero.jsp</result>
-            <result name="error" type="redirectAction">menuCocinero</result>
+        <action name="eliminarUsuario" class="controller.UsuariosAction" method="eliminar">
+            <result name="success">/login.jsp</result>
+            <result name="error" type="redirectAction">menuCliente</result>
+        </action>
+
+        <action name="">
+            <result>/panelAdmin.jsp</result>
+        </action>
+        <action name="listarUsuarios" class="controller.UsuariosAction" method="listar">
+            <result name="success">/listarUsuarios.jsp</result>
+            <result name="error">/panelAdmin.jsp</result>
         </action>
         
         
-        
-        
-        
-        
-        
+        <action name="gestion" class="controller.UsuariosAction" method="listar">
+            <result name="success">/listarUsuarios.jsp</result>
+            <result name="error">/panelAdmin.jsp</result>
+        </action>
         
         
         <action name="listarCategorias" class="controller.CategoriasAction" method="listar">

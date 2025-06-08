@@ -40,16 +40,6 @@ public class PlatosAction extends ActionSupport implements SessionAware {
         }
         return SUCCESS;
     }
-    
-  /*  public String listarPorCliente() {
-        Usuario usuario = (Usuario) session.get("usuarioLogueado");
-        if (usuario != null) {
-            PlatoJerseyClient client = new PlatoJerseyClient();
-            platos = client.getPlatosPorUsuario(usuario.getId());
-            return SUCCESS;
-        }
-        return ERROR;
-    }
 
     /* public String eliminar() {
         Usuario usuario = (Usuario) session.get("usuarioLogueado");

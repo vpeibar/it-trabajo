@@ -12,23 +12,7 @@
     <body>
         <h1>Bienvenido, <s:property value="#usuario.nombreUsuario" />!</h1>
         <h2>Menú de Cocinero</h2>
-        <s:form action="añadirPlato">
-            <s:submit value="Añadir Plato"/>
-        </s:form>
-
-        <s:form action="listarPorCliente">
-            <s:submit value="Ver mis platos"/>
-        </s:form>
-
-        <s:form action="verValoraciones">
-            <s:submit value="Ver valoraciones"/>
-        </s:form>
-
-        <s:form action="verPedidosPendientes">
-            <s:submit value="Ver pedidos pendientes"/>
-        </s:form>
-        
-        <s:form action="eliminarUsuario">
+        <s:form action="eliminarUsuario" method="delete" onsubmit="return confirm('¿Está seguro de eliminar su cuenta?');">
             <s:submit value="Darse de baja"/>
         </s:form>
     </body>

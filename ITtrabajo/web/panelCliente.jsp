@@ -17,18 +17,6 @@
             <s:submit value="Ver Platos"/>
         </s:form>
 
-        <s:form action="realizarPedido">
-            <s:submit value="Realizar Pedido"/>
-        </s:form>
-
-        <s:form action="valorarPedido">
-            <s:submit value="Valorar Pedido"/>
-        </s:form>
-
-        <s:form action="listarPedidos">
-            <s:submit value="Ver Mis Pedidos"/>
-        </s:form>
-
         <s:form action="eliminarUsuario" method="delete" onsubmit="return confirm('¿Está seguro de eliminar su cuenta?');">
             <s:submit value="Darse de baja"/>
         </s:form>
