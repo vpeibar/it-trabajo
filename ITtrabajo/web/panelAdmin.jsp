@@ -22,11 +22,11 @@
             <s:submit value="Gestión de Platos"/>
         </s:form>
 
-        <s:form action="gestionCategorias">
+        <s:form action="listarCategorias">
             <s:submit value="Gestión de Categorías"/>
         </s:form>
         
-        <s:form action="gestionIngredientes">
+        <s:form action="listarIngredientes">
             <s:submit value="Gestión de Ingredientes"/>
         </s:form>
         
@@ -34,7 +34,7 @@
             <s:submit value="Gestión de Pedidos"/>
         </s:form>
         
-        <s:form action="gestionValoracion">
+        <s:form action="listarValoraciones">
             <s:submit value="Gestión de Valoraciones"/>
         </s:form>
     </body>

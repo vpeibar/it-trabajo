@@ -4,6 +4,8 @@ import clientes.IngredienteJerseyClient;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
+import javax.ws.rs.core.GenericType;
 import rest.Ingrediente;
 import javax.ws.rs.core.Response;
 
@@ -11,12 +13,28 @@ import javax.ws.rs.core.Response;
  *
  * @author maria
  */
-public class IngredienteAction extends ActionSupport {
+public class IngredientesAction extends ActionSupport {
 
     private Ingrediente ingrediente;
+    private List<Ingrediente> ingredientes;
 
-    public IngredienteAction() {
+    public IngredientesAction() {
         ingrediente = new Ingrediente(); 
+    }
+    
+    public String listar() {
+        IngredienteJerseyClient client = new IngredienteJerseyClient();
+        try {
+            GenericType<List<Ingrediente>> genericType = new GenericType<List<Ingrediente>>() {
+            };
+            ingredientes = client.findAll_XML(genericType);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ERROR;
+        } finally {
+            client.close();
+        }
+        return SUCCESS;
     }
 
     public String registrar() {
@@ -52,4 +70,10 @@ public class IngredienteAction extends ActionSupport {
     public void setIngrediente(Ingrediente ingrediente) {
         this.ingrediente = ingrediente;
     }
+
+    public List<Ingrediente> getIngredientes() {
+        return ingredientes;
+    }
+    
+    
 }

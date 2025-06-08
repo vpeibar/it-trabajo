@@ -50,36 +50,48 @@
             <result name="error">/panelAdmin.jsp</result>
         </action>
         
-        
-        <action name="gestion" class="controller.UsuariosAction" method="listar">
-            <result name="success">/listarUsuarios.jsp</result>
-            <result name="error">/panelAdmin.jsp</result>
-        </action>
-        
-        
         <action name="listarCategorias" class="controller.CategoriasAction" method="listar">
             <result name="success">/listarCategorias.jsp</result>
         </action>
-        <action name="registrarCategoria" class="controller.CategoriasAction" method="registrar">
-            <result name="success">/registrarCategoria.jsp</result>
+        <action name="formRegistrarCategoria">
+            <result>/registrarCategoria.jsp</result>
         </action>
         <action name="registrarCategoria" class="controller.CategoriasAction" method="registrar">
             <result name="success" type="redirectAction">listarCategorias</result>
         </action>
-        <action name="eliminarCategoria" class="controller.CategoriasAction" method="eliminar">
+      <!--  <action name="eliminarCategoria" class="controller.CategoriasAction" method="eliminar">
             <result name="success" type="redirectAction">listarCategorias</result>
-        </action>
+            <result name="error">listarCategorias</result>
+        </action>-->
         
+        <action name="listarIngredientes" class="controller.IngredientesAction" method="listar">
+            <result name="success">/listarIngredientes.jsp</result>
+        </action>
+        <action name="formRegistrarIngrediente">
+            <result>/registrarIngrediente.jsp</result>
+        </action>
+        <action name="registrarIngrediente" class="controller.IngredientesAction" method="registrar">
+            <result name="success" type="redirectAction">listarIngredientes</result>
+        </action>
+  <!--      <action name="eliminarIngrediente" class="controller.IngredientesAction" method="eliminar">
+            <result name="success" type="redirectAction">listarIngredientes</result>
+            <result name="error" type="redirectAction">listarIngredientes</result>
+        </action>-->
         
-        <action name="registrarIngrediente" class="controller.IngredienteAction" method="registrar">
-            <result name="success">/registrarIngrediente.jsp</result>
-            <result name="error">/formulario.jsp</result>
+        <action name="listarValoraciones" class="controller.ValoracionesAction" method="listar">
+            <result name="success">/listarValoraciones.jsp</result>
         </action>
-
-        <action name="eliminarIngrediente" class="controller.IngredienteAction" method="eliminar">
-            <result name="success">/eliminarIngrediente.jsp</result>
-            <result name="error">/formulario.jsp</result>
+        <action name="formRegistrarValoracion">
+            <result>/registrarValoracion.jsp</result>
         </action>
+        <action name="registrarValoracion" class="controller.ValoracionesAction" method="registrar">
+            <result name="success" type="redirectAction">listarValoraciones</result>
+        </action>
+  <!--      <action name="eliminarIngrediente" class="controller.IngredientesAction" method="eliminar">
+            <result name="success" type="redirectAction">listarIngredientes</result>
+            <result name="error" type="redirectAction">listarIngredientes</result>
+        </action>-->
+        
 
     </package>
 </struts>

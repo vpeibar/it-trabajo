@@ -15,7 +15,7 @@
     <body>
         <h1>Registrar categoria</h1>
 
-        <s:form action="registrar" method="post">
+        <s:form action="registrarCategoria" method="post">
             <s:textfield name="categoria.nombre" label="Nombre" />
             <s:textarea name="categoria.descripcion" label="Descripcion"/>
             <s:submit value="Registrar" />
