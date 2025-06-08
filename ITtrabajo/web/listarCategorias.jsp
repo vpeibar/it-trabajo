@@ -34,6 +34,13 @@
                         <td><s:property value="#categoria.id"/></td>
                         <td><s:property value="#categoria.nombre"/></td>
                         <td><s:property value="#categoria.descripcion"/></td>
+                        <td>
+                            <s:form action="eliminarCategoria" method="delete" onsubmit="return confirm('¿Está seguro de eliminar esta categoria?');">
+                                <s:hidden name="categoria.id" value="%{#categoria.id}" />
+                                <s:submit value="Eliminar" />
+                            </s:form>
+
+                        </td>
                     </tr>
                 </s:iterator>
             </table>

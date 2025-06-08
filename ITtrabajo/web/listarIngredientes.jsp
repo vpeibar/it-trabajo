@@ -29,7 +29,7 @@
                         <td><s:property value="#ingrediente.nombre"/></td>
                         <td>
                             <s:form action="eliminarIngrediente" method="delete" onsubmit="return confirm('¿Está seguro de eliminar este ingrediente?');">
-                                <s:hidden name="id" value="%{#ingrediente.id}" />
+                                <s:hidden name="ingrediente.id" value="%{#ingrediente.id}" />
                                 <s:submit value="Eliminar" />
                             </s:form>
                         </td>

@@ -18,6 +18,7 @@ import rest.Valoracion;
 public class ValoracionesAction extends ActionSupport {
 
     private List<Valoracion> valoraciones;
+    private Valoracion valoracion;
 
     public ValoracionesAction() {
     }
@@ -36,9 +37,42 @@ public class ValoracionesAction extends ActionSupport {
         }
         return SUCCESS;
     }
+    
+    public String registrar() {
+        try {
+            ValoracionJerseyClient client = new ValoracionJerseyClient();
+            client.create_XML(valoracion); 
+            client.close();
+            return SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ERROR;
+        }
+    }
+
+    public String eliminar() {
+        
+        ValoracionJerseyClient client = new ValoracionJerseyClient();
+        try {
+            client.remove(String.valueOf(valoracion.getId()));
+            client.close();
+            return SUCCESS;
+        } catch (Exception e) {
+            addActionError("Error al eliminar valoracion: " + e.getMessage());
+            return ERROR;
+        }
+    }
 
     public List<Valoracion> getValoraciones() {
         return valoraciones;
+    }
+
+    public Valoracion getValoracion() {
+        return valoracion;
+    }
+
+    public void setValoracion(Valoracion valoracion) {
+        this.valoracion = valoracion;
     }
 
     

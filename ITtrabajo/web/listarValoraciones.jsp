@@ -36,7 +36,7 @@
                         <td><s:property value="#valoracion.fecha"/></td>
                         <td>
                             <s:form action="eliminarValoracion" method="delete" onsubmit="return confirm('¿Está seguro de eliminar esta valoracion?');">
-                                <s:hidden name="id" value="%{#valoracion.id}" />
+                                <s:hidden name="valoracion.id" value="%{#valoracion.id}" />
                                 <s:submit value="Eliminar" />
                             </s:form>
                         </td>
