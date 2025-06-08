@@ -6,16 +6,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page session="true" %>
+<s:set var="usuario" value="#session.usuarioLogueado" />
 <html>
     <head><title>Panel Cocinero</title></head>
     <body>
-        <h1>Bienvenido, <s:property value="#session.usuario.nombreUsuario" />!</h1>
+        <h1>Bienvenido, <s:property value="#usuario.nombreUsuario" />!</h1>
         <h2>Menú de Cocinero</h2>
         <s:form action="añadirPlato">
             <s:submit value="Añadir Plato"/>
         </s:form>
 
-        <s:form action="listarPlatos">
+        <s:form action="listarPorCliente">
             <s:submit value="Ver mis platos"/>
         </s:form>
 

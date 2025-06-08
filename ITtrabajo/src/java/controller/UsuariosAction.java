@@ -14,13 +14,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.core.GenericType;
+import org.apache.struts2.interceptor.SessionAware;
 import rest.Usuario;
 
 /**
  *
  * @author maria
  */
-public class UsuariosAction extends ActionSupport {
+public class UsuariosAction extends ActionSupport implements SessionAware {
     private List<Usuario> usuarios;
     private Usuario usuario;
     private List<String> tipos = Arrays.asList("cliente", "cocinero");
@@ -76,13 +77,13 @@ public class UsuariosAction extends ActionSupport {
     }
     
     public String eliminar() {
-        UsuarioJerseyClient client = new UsuarioJerseyClient();
-        try {
+        Usuario usuario = (Usuario) session.get("usuarioLogueado");
+        if (usuario != null) {
+            UsuarioJerseyClient client = new UsuarioJerseyClient();
             client.remove(String.valueOf(usuario.getId()));
             client.close();
             return SUCCESS;
-        } catch (Exception e) {
-            addActionError("Error al eliminar usuario: " + e.getMessage());
+        } else {
             return ERROR;
         }
     }

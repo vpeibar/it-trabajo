@@ -7,10 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page session="true" %>
+<s:set var="usuario" value="#session.usuarioLogueado" />
 <html>
     <head><title>Panel Cliente</title></head>
     <body>
-        <h1>Bienvenido, <s:property value="#session.usuario.nombreUsuario" />!</h1>
+        <h1>Bienvenido, <s:property value="#usuario.nombreUsuario" />!</h1>
         <h2>Menú de Cliente</h2>
         <s:form action="listarPlatos">
             <s:submit value="Ver Platos"/>
@@ -27,8 +28,8 @@
         <s:form action="listarPedidos">
             <s:submit value="Ver Mis Pedidos"/>
         </s:form>
-        
-        <s:form action="eliminarUsuario">
+
+        <s:form action="eliminarUsuario" method="delete" onsubmit="return confirm('¿Está seguro de eliminar su cuenta?');">
             <s:submit value="Darse de baja"/>
         </s:form>
     </body>

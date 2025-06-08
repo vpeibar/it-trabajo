@@ -34,15 +34,30 @@
         </action>
         
         <action name="eliminarUsuario" class="controller.UsuariosAction" method="eliminar">
-            <result name="success">login.jsp</result>
+            <result name="success">/login.jsp</result>
+            <result name="error" type="redirectAction">menuCliente</result>
         </action>
-        <action name="realizarPedido" class="controller.PlatosAction" method="listar">
+      <!--  <action name="realizarPedido" class="controller.PlatosAction" method="listar">
             <result name="success">/realizarPedido.jsp</result>
         </action>
         <action name="pedido-crear" class="controller.PedidoAction" method="crear">
             <result name="success">/realizarPedido.jsp</result>
             <result name="error">/realizarPedido.jsp</result>
+        </action>-->
+        
+        <action name="menuCocinero">
+            <result name="success">/panelCocinero.jsp</result>
         </action>
+        <action name="listarPorCliente" class="controller.PlatosAction" method="listarPorCliente">
+            <result name="success">/listarPlatosCocinero.jsp</result>
+            <result name="error" type="redirectAction">menuCocinero</result>
+        </action>
+        
+        
+        
+        
+        
+        
         
         
         
